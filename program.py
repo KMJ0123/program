@@ -4,8 +4,6 @@ print('20244043 김민주')
 import requests, json, time      #requests모듈과 beautifulsoup 모듈 time모듈 가져오기
 from bs4 import BeautifulSoup
 
-def send_to_Band(a,b,c):
-
 def get_stock_price(stock_code): #get_stock_price()함수 정의 실시간 가격을 가져오는 역할을 함
     url = f"https://finance.naver.com/item/main.nhn?code={stock_code}"
 
