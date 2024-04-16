@@ -2,12 +2,11 @@
 print('20244043 김민주')
 
 import json
-from pprint import pprint 
 from urllib import request, parse
 import time
 
 token = 'ZQAAAYEDIPngExdltTFMb-dmKO5rfejy7M3oHAvmKlpTY8pYinUnQ0C2cGVNjFG0k9yLSjHjC4uOony32LbEkWTGST9fPprrY3Sn6oT8beOaRaQf'
-band_key = 'AAAb_r1pS-hNWRGcdKO6aa9t'
+band_key = 'AAAya6jGF4MUx5TXLm7eSun8'
 
 def send_to_Band(bk, content, do_push=True):
     url = 'https://openapi.band.us/v2.2/band/post/create'

@@ -1,8 +1,11 @@
 def sum(n):
-    if(n == 101):
+    if(n == 1):
         return 1
     else:
         return sum(n-1)+n
+    
+print("---- sum(10)")
+print(sum(10))
     
 print("---sum(10)")
 print(sum(100))

@@ -1,29 +1,36 @@
-# import requests
+import urllib.request, time
 
-# url = 'https://kauth.kakao.com/oauth/token'
-# rest_api_key = '8e58a9c0a3c18e504ed060195b62cc8a'
-# redirect_uri = 'https://example.com/oauth'
-# authorize_code = 'AkyU7d1bASo3CbeRu-yIuMBbOfrapXI-LpLudF7afcMBWu0-8waw0CZ-mEYKKclfAAABjryeFBTdCc_9be4aqQ'
+def get_price():
+    page = urllib.request.urlopen(" http://cs.sch.ac.kr/prices-loyalty.py")
+    text = page.read().decode("utf8")
 
-# data = {
-#     'grant_type':'authorization_code',
-#     'client_id':rest_api_key,
-#     'redirect_uri':redirect_uri,
-#     'code': authorize_code,
-#     }
+    if price_now == ('Y'):
+        where = text.find(">$")
+        start_of_price = where + 2
+        end_of_price = start_of_price + 4
+        price = float(text[start_of_price : end_of_price])
 
-# response = requests.post(url, data=data)
-# tokens = response.json()
-# print(tokens)
+        return float(text[start_of_price: end_of_price])
+        
 
-# import json
+    else:
+        where = text.find(">$")
+        start_of_price = where + 2
+        end_of_price = start_of_price + 4
+        price = float(text[start_of_price : end_of_price])
+        
+        where = text.find("Price on")
+        start_of_price = where + 9
+        end_of_price = start_of_price + 24
+        date = text[start_of_price : end_of_price]
+        
+        return price, date
 
-# with open("kakao_code.json","w") as fp:
-#     json.dump(tokens, fp)
 
-import json
+price_now = input('Do you want to see the price now(Y/N)?')
 
-with open("kakao_code.json","r") as fp:
-    ts = json.load(fp)
-print(ts)
-print(ts["access_token"])
+if price_now == "Y":
+    print(price_now)
+else:
+    price, date = get_price()
+    print(get_price)

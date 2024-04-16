@@ -1,9 +1,10 @@
 import requests
 import json
 
-#2.
 with open("kakao_code.json","r") as fp:
     tokens = json.load(fp)
+
+print(tokens)
 
 # print(tokens)
 # print(tokens["access_token"])

@@ -22,7 +22,7 @@ def get_stock_price(stock_code): #get_stock_price()함수 정의 실시간 가�
 
 stock_code = "005930"  # 삼성전자 주식 코드
 
-while True: #프로그램을 종료할때까지 계속 주식 가격을 알려준ㄴ 코드
+while True: #프로그램을 종료할때까지 계속 주식 가격을 알려주는 코드
     price = get_stock_price(stock_code)
     print(f"삼성전자 주식 가격: {price}")
     time.sleep(10)  # 10초마다 주식 가격 확인
