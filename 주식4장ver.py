@@ -27,18 +27,18 @@ stock_check = input("""What stock would you like to check?
                     1. Samsung 2. LG 3. sk
                     Please enter the number""")
 
-if stock_check == str(1): #stock_check의 값이 문자열 1인 경우
-    stock_code = '005930' #삼성 주식 코드 005930를 변수에 저장
-    price = get_stock_price(stock_code) #get_stock_price 함수 호출
-    stock = (f"삼성전자 주식 가격: {price}") #리턴 받은 삼성 주식 가격을 문자열에 포함해 변수에 저장
+if stock_check == str(1): 
+    stock_code = '005930' 
+    price = get_stock_price(stock_code) 
+    stock = (f"삼성전자 주식 가격: {price}") 
 
-elif stock_check == str(2): #stock_check의 값이 문자열 2인 경우
-    stock_code = '003550'  #LG 주식 코드 005930를 변수에 저장
-    price = get_stock_price(stock_code) #get_stock_price 함수 호출
-    stock = (f"LG 주식 가격: {price}")  #리턴 받은 LG 주식 가격을 문자열에 포함해 변수에 저장
+elif stock_check == str(2): 
+    stock_code = '003550'  
+    price = get_stock_price(stock_code) 
+    stock = (f"LG 주식 가격: {price}")  
 
-elif stock_check == str(3): #stock_check의 값이 문자열 1인 경우
-    stock_code = '017670'   #sk 주식 코드 005930를 변수에 저장
-    price = get_stock_price(stock_code)#get_stock_price 함수 호출
-    stock = (f"sk 주식 가격: {price}")#리턴 받은 sk 주식 가격을 문자열에 포함해 변수에 저장
+elif stock_check == str(3): 
+    stock_code = '017670'   
+    price = get_stock_price(stock_code)
+    stock = (f"sk 주식 가격: {price}")
 
