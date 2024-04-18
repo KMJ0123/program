@@ -9,14 +9,16 @@ token = 'ZQAAAYEDIPngExdltTFMb-dmKO5rfejy7M3oHAvmKlpTY8pYinUnQ0C2cGVNjFG0k9yLSjH
 band_key = 'AAAya6jGF4MUx5TXLm7eSun8'
 
 stock_check = int(input("""What stock would you like to check?
-                    1. Samsung 2. LG 3. SK
-                    Please enter the number: """))
+                    1. Samsung 2. LG 3. SK 4. ALL
+                    Please enter the number: """))         #어떤 주식 정보를 볼 것인가
 
-send = input("""How would you like to check stock information?
+send = int(input("""How would you like to check stock information?
              1. Band 2. file 3. Terminal
-             Please enter the number: """)
+             Please enter the number: """))              #주식 정보를 어디서 볼건가
 
-def send_to_Band(bk, content, do_push=True):
+price_list = []
+
+def send_to_Band(bk, content, do_push=True):                              #밴드
     url = 'https://openapi.band.us/v2.2/band/post/create'
     data = {'access_token': token, 'band_key': bk, 'content': content, 'do_push': do_push}
     response = requests.post(url, data=data)
@@ -42,28 +44,37 @@ def get_stock_price(stock_code):
 stock_codes = ['005930', '003550', '017670']
 stock_names = ['삼성전자', 'LG', 'SK']
 
-if 1 <= stock_check <= len(stock_codes):    #원하는 주식 불러와주는 블럭
+if 1 <= stock_check <= len(stock_codes):    
     stock_code = stock_codes[stock_check - 1]
     stock_name = stock_names[stock_check - 1]
-    price = get_stock_price(stock_code)
-    
+    price = get_stock_price(stock_code)     #반복문을 이용하여 변수에 값을 3개 저장하고 싶음
+
+elif stock_check == 4:
+    for i in range(3):
+        stock_code = stock_codes[i]
+        stock_name = stock_names[i]
+        price = get_stock_price(stock_code)
+        price_list.append(price)
+
 else:
     print('Please choose a number from the options provided.')
 
-if send == str(1): #주식 자료를 어디서 확인할건지
+if send == 1: #주식 자료를 어디서 확인할건지
     send_to_Band(band_key, f"{stock_name} 주식 가격: {price}")
 
-elif send == str(2):
+elif send == 2:
     home_dir = os.path.expanduser("~")
-    desktop_path = os.path.join(home_dir, "Desktop")
+    desktop_path = os.path.join(home_dir, "Desktop")   #파일 경로 설정해주기
     stock = os.path.join(desktop_path, "price.txt")
     with open(stock, "w") as f:
         f.write(f"{stock_name} 주식 가격: {price}")
 
-elif send == str(3):
+elif send == 3:
     print(f"{stock_name} 주식 가격: {price}")
 
 else:
     print('Please choose a number from the options provided.')
 
     #주식 코드를 택스트 파일에 저장해서 실행할때 값을 가져와서 실행 여러개의 주식 값을 확인할 수 있도록 변경 그 주식을 내림차 순으로 정렬해서 출력
+
+    #동시에 출력하는건 해결함 이제 보내주는거 어떻게 보내줄건지 해야함 집가고싶다요요요요요 딕셔너리 정렬의 기준은 key값이다
