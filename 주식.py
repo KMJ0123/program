@@ -60,7 +60,13 @@ else:
     print('Please choose a number from the options provided.')
 
 if send == 1: #주식 자료를 어디서 확인할건지
-    send_to_Band(band_key, f"{stock_name} 주식 가격: {price}")
+    if stock_check == 4:
+        for stock_info in price_list():
+            send_to_Band(band_key, f"{stock_names[stock_info]} 주식 가격: {price_list[stock_info]}\n")
+
+    else:
+        send_to_Band(band_key, f"{stock_name} 주식 가격: {price}")
+    
 
 elif send == 2:
     home_dir = os.path.expanduser("~")
@@ -70,7 +76,11 @@ elif send == 2:
         f.write(f"{stock_name} 주식 가격: {price}")
 
 elif send == 3:
-    print(f"{stock_name} 주식 가격: {price}")
+    if stock_check == 4:
+        for i in range(3):
+            print(f"{stock_names[i]} 주식 가격: {price_list[i]}")
+
+    #print(f"{stock_name} 주식 가격: {price}")
 
 else:
     print('Please choose a number from the options provided.')
