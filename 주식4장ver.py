@@ -65,6 +65,3 @@ elif send == str(3):
 
 else:
     print('Please choose a number from the options provided.')
-
-    #주식 코드를 택스트 파일에 저장해서 실행할때 값을 가져와서 실행 여러개의 주식 값을 확인할 수 있도록 변경 그 주식을 내림차 순으로 정렬해서 출력
-
